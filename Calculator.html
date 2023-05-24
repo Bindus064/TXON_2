@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Calculator</title>
+  <style>
+    .container {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="result" readonly>
+    <br>
+    <button onclick="appendNumber(7)">7</button>
+    <button onclick="appendNumber(8)">8</button>
+    <button onclick="appendNumber(9)">9</button>
+    
+    <br>
+    <button onclick="appendNumber(4)">4</button>
+    <button onclick="appendNumber(5)">5</button>
+    <button onclick="appendNumber(6)">6</button>
+    
+    <br>
+    <button onclick="appendNumber(1)">1</button>
+    <button onclick="appendNumber(2)">2</button>
+    <button onclick="appendNumber(3)">3</button>
+    
+    <br>
+    <button onclick="appendNumber(0)">0</button>
+    <button onclick="performOperation('/')">/</button>
+    <button onclick="clearResult()">C</button>
+    
+    <br>
+    <button onclick="performOperation('*')">*</button>
+    <button onclick="performOperation('-')">-</button>
+    <button onclick="performOperation('+')">+</button>
+ 
+    <br>
+    <button onclick="calculateResult()">=</button>
+    
+    
+  </div>
+
+  <script>
+    let currentResult = '';
+
+    function appendNumber(number) {
+      currentResult += number;
+      document.getElementById('result').value = currentResult;
+    }
+
+    function performOperation(operator) {
+      currentResult += operator;
+      document.getElementById('result').value = currentResult;
+    }
+
+    function clearResult() {
+      currentResult = '';
+      document.getElementById('result').value = currentResult;
+    }
+
+    function calculateResult() {
+      try {
+        currentResult = eval(currentResult);
+        document.getElementById('result').value = currentResult;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
